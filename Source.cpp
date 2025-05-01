@@ -22,4 +22,19 @@ int main()
 	lucky.insert(85);
 	lucky.insert(44);
 	lucky.print();
+
+	srand(time(NULL));
+	Heap<int> test1;
+	Heap<int> test2;
+	for (int i = 0; i < 20 + 1; i++)
+	{
+		test1.insert(rand() % 100);
+	}
+	for (int i = 0; i < (rand() % 20 + 1); i++)
+	{
+		test2.insert(rand() % 100);
+	}
+	test1.merge(test2);
+	test1.print();
+	test2.print();
 }
