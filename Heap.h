@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -71,16 +70,16 @@ public:
 	}
 	bool hasLargerChild(int index)
 	{
-		return	(this->left(index) < this->value.size() && 
-				this->value[index] < this->value[this->left(index)]) ||
-				(this->right(index) < this->value.size() && 
+		return	(this->left(index) < this->value.size() &&
+			this->value[index] < this->value[this->left(index)]) ||
+			(this->right(index) < this->value.size() &&
 				this->value[index] < this->value[this->right(index)]);
 	}
 	int largerChild(int index)
 	{
 		if (this->right(index) >= this->value.size())
 			return this->left(index);
-		else if (this->value[this->(index)] > this->value[this_ > right(index)])
+		else if (this->value[index] > this->value[this-> right(index)])
 			return this->left(index);
 		else
 			return this->right(index);
@@ -92,9 +91,18 @@ public:
 		int index = 0, big = 0;
 		while (this->hasLargerChild(index))
 		{
-			nig = this->largerChild(index);
+			big = this->largerChild(index);
 			swap(index, big);
 			index = big;
+		}
+	}
+	void merge(Heap<TYPE> other)
+	{
+		int size = other.size();
+		for (int i = 0; i < size; i++)
+		{
+			this->insert(other.read());
+			other.remove();
 		}
 	}
 };
